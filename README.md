@@ -1,4 +1,5 @@
 # scones - Simple CONEctionS
+[![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
 The package aims to provide helpful functions to simplify creating ODBC connections and data extraction. The implementation uses the performant [odbc](https://github.com/r-dbi/odbc) package. The package is currently under development and is available as a pre-release.
 
