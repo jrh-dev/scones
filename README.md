@@ -1,11 +1,11 @@
 # scones - Simple CONEctionS
 
-The package aims to provide helpful functions to simplify creating ODBC connections and data extraction. The implementation utilises the [odbc](https://github.com/r-dbi/odbc) package.  The package is currently under development and is available as a pre-release.
+The package aims to provide helpful functions to simplify creating ODBC connections and data extraction. The implementation uses the performant [odbc](https://github.com/r-dbi/odbc) package. The package is currently under development and is available as a pre-release.
 
 ### Who is this package for?
-The package was designed for analysts who need to extract data from a database with ODBC drivers. The package provides much more limited functionality than [odbc](https://github.com/r-dbi/odbc) but aims to be simpler to use, requiring less specific knowledge of database infrastructure and requiring only minimal arguments.
+The package was designed for user who need to extract data from a SQL database accessible with ODBC drivers. The package provides limited functionality in comparison to [odbc](https://github.com/r-dbi/odbc), but aims to be simpler to use, requiring less specific knowledge of database infrastructure and requiring the user to specify a minimal number of arguments.
 
-Use of the package is intended for situations where users are extracting data with SELECT queries and it was specifically designed with use in interactive or exploratory analyses in mind. More advanced operations and writing to a database are outwith the scope of the package and would be covered by the use of the [odbc](https://github.com/r-dbi/odbc)  package directly.
+Primary use of the package is intended for situations where users are extracting data with SELECT queries and it was specifically designed with performing exploratory analyses in interactive sessions in mind. More advanced operations and writing to a database are outwith the scope of the package and would be covered by the use of the [odbc](https://github.com/r-dbi/odbc) package directly.
 
 ## Prerequsites
 Drivers and connection setup at system level should be completed in line with the OS being used. The exact drivers required and process to be followed will vary by OS and guidance is readily available online.
