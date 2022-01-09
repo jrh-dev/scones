@@ -1,0 +1,23 @@
+Package: scones
+Title: Simplify ODBC connections in R
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "James",
+           family = "Hardy",
+           role = c("aut", "cre"),
+           email = "jh-rdev@protonmail.com")
+Description: Helpful functions to simplify creating ODBC connections and data 
+    extraction using SELECT queries. Utilises the fast 'odbc' package. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    odbc,
+    keyring,
+    rstudioapi
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
