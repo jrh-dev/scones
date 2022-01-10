@@ -6,7 +6,7 @@ The package aims to provide helpful functions to simplify creating ODBC connecti
 The package is currently under development and is available as a pre-release.
 
 ### Who is this package for?
-The package has been designed for users who need to extract data from a SQL database accessible with ODBC drivers. The package provides limited functionality in comparison to [odbc](https://github.com/r-dbi/odbc), but aims to be simpler to use, requiring less specific knowledge of database infrastructure, and requiring users to specify only a minimal number of arguments.
+The package has been designed for users, particuarly those working in analytical roles, who need to extract data from a SQL database accessible with ODBC drivers. The package provides limited functionality in comparison to [odbc](https://github.com/r-dbi/odbc), but aims to be simpler to use, requiring less specific knowledge of database infrastructure, and requiring users to specify only a minimal number of arguments.
 
 Primary use of the package is intended for situations where users are extracting data with SELECT queries and it has been specifically designed with performing exploratory analyses in interactive sessions in mind. More advanced operations and writing to a database are outwith the scope of the package and would be covered by the use of the [odbc](https://github.com/r-dbi/odbc) package directly.
 
