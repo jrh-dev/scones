@@ -16,6 +16,10 @@ Drivers and connection setup at system level should be completed in line with th
 ## Installation
 ### R
 ```
+# install from github
+library(devtools)
+devtools::install_github("jrh-dev/scones")
+
 # install from tar.gz
 install.packages(path_to_file, repos = NULL, type="source")
 ```
