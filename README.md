@@ -39,7 +39,7 @@ library(scones)
 DataSources(contains = "patient")
 ```
 ### Connecting to a Database
-The `Connect()` function allows users to connect to a database.  Where authentication is required through credential entry, the user will receive prompts.  Credential capture is handled by the  [rstudioaopi](https://github.com/rstudio/rstudioapi) , thus requiring rstudio. The lack of alternate methods of credential entry are designed to discourage details from being passed as plain text or stored in R scripts. 
+The `Connect()` function allows users to connect to a database.  Where authentication is required through credential entry, the user will receive prompts.  Credential capture is handled by the  [rstudioaopi](https://github.com/rstudio/rstudioapi) , thus requiring rstudio. The lack of alternate methods of credential entry is designed to discourage details from being passed as plain text or stored in R scripts. 
 
 Where the user intends to retrieve credentials from  the system credential store, the `KeyringConnect()` function is available which uses the [keyring]("https://github.com/r-lib/keyring") package to do so in a secure manner. This method is well suited to use within automated processes.
 
