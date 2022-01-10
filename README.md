@@ -1,12 +1,14 @@
 # scones - Simple CONEctionS
 [![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
-The package aims to provide helpful functions to simplify creating ODBC connections and data extraction. The implementation uses the performant [odbc](https://github.com/r-dbi/odbc) package. The package is currently under development and is available as a pre-release.
+The package aims to provide helpful functions to simplify creating ODBC connections and performing data extraction. The package acts as a wrapper for the performant [odbc](https://github.com/r-dbi/odbc) package.
+
+The package is currently under development and is available as a pre-release.
 
 ### Who is this package for?
-The package was designed for user who need to extract data from a SQL database accessible with ODBC drivers. The package provides limited functionality in comparison to [odbc](https://github.com/r-dbi/odbc), but aims to be simpler to use, requiring less specific knowledge of database infrastructure and requiring the user to specify a minimal number of arguments.
+The package has been designed for users who need to extract data from a SQL database accessible with ODBC drivers. The package provides limited functionality in comparison to [odbc](https://github.com/r-dbi/odbc), but aims to be simpler to use, requiring less specific knowledge of database infrastructure, and requiring users to specify only a minimal number of arguments.
 
-Primary use of the package is intended for situations where users are extracting data with SELECT queries and it was specifically designed with performing exploratory analyses in interactive sessions in mind. More advanced operations and writing to a database are outwith the scope of the package and would be covered by the use of the [odbc](https://github.com/r-dbi/odbc) package directly.
+Primary use of the package is intended for situations where users are extracting data with SELECT queries and it has been specifically designed with performing exploratory analyses in interactive sessions in mind. More advanced operations and writing to a database are outwith the scope of the package and would be covered by the use of the [odbc](https://github.com/r-dbi/odbc) package directly.
 
 ## Prerequsites
 Drivers and connection setup at system level should be completed in line with the OS being used. The exact drivers required and process to be followed will vary by OS and guidance is readily available online.
