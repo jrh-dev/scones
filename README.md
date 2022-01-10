@@ -41,7 +41,7 @@ DataSources(contains = "patient")
 ### Connecting to a Database
 The `Connect()` function allows users to connect to a database.  Where authentication is required through credential entry, the user will receive prompts.  Credential capture is handled by the  [rstudioaopi](https://github.com/rstudio/rstudioapi) , thus requiring rstudio. The lack of alternate methods of credential entry is designed to discourage credentials from being passed as plain text or stored in R scripts. 
 
-Where the user intends to retrieve credentials from  the system credential store, the `KeyringConnect()` function is available which uses the [keyring]("https://github.com/r-lib/keyring") package to do so in a secure manner. This method is well suited to use within automated processes.
+Where the user intends to retrieve credentials from  the system credential store, the `KeyringConnect()` function is available which uses the [keyring](https://github.com/r-lib/keyring) package to do so in a secure manner. This method is well suited to use within automated processes.
 
 #### With Configuration Files
 
@@ -66,7 +66,7 @@ Connect(dsn = "a_data_source_name",
         port = "6123")
 ```
 #### Using Stored Credentials
-Users can connect to a database whilst using credentials retrieved from the system credential store with `KeyringConnect()`. The function used the [keyring]("https://github.com/r-lib/keyring") package. A key is typically defined A key typically consists of a service name and a password, however, an additional "username" variable can also be stored and must be present to use this function.
+Users can connect to a database whilst using credentials retrieved from the system credential store with `KeyringConnect()`. The function used the [keyring](https://github.com/r-lib/keyring) package. A key is typically defined A key typically consists of a service name and a password, however, an additional "username" variable can also be stored and must be present to use this function.
 
 The function does not handle keyring unlocking. When used in an interactive session and the keyring is locked at the point where the function is called the user will be prompted to enter the keyring password. Otherwise,  appropriate code should be executed to unlock the keyring before calling the function (if required).
 ```
