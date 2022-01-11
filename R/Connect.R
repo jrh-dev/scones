@@ -23,10 +23,6 @@
 #' @param driver Character string specifying the name of a driver to be used.
 #'  default is `odbc::odbc()`.
 #'
-#' @param host Character string specifying the host name.
-#'
-#' @param port Character string specifying  the port number.
-#'
 #' @param trusted Logical value, use `TRUE` when the connection does not require
 #'  a username or password. The default, `FALSE`, will prompt the user for
 #'  credentials.
@@ -37,8 +33,7 @@
 #'  }
 #'
 #' @export
-Connect <- function(dsn = NULL, driver = odbc::odbc(), host = NULL, port = NULL,
-                    trusted = FALSE) {
+Connect <- function(dsn = NULL, driver = odbc::odbc(), trusted = FALSE, ...) {
   
   requireNamespace("rstudioapi")
   
@@ -46,8 +41,6 @@ Connect <- function(dsn = NULL, driver = odbc::odbc(), host = NULL, port = NULL,
     odbc::dbConnect(
       drv = driver,
       dsn = dsn,
-      host = host,
-      port = port,
       uid = if (!trusted) {
         rstudioapi::showPrompt("Username", "Enter username", default = "")
       } else {
