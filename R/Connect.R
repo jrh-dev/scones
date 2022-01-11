@@ -33,10 +33,10 @@
 #'  }
 #'
 #' @export
-Connect <- function(dsn = NULL, driver = odbc::odbc(), trusted = FALSE, ...) {
-  
+Connect <- function(dsn = NULL, driver = odbc::odbc(), trusted = FALSE) {
+
   requireNamespace("rstudioapi")
-  
+
   return(
     odbc::dbConnect(
       drv = driver,

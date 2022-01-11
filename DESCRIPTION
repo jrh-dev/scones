@@ -1,6 +1,6 @@
 Package: scones
 Title: Simplify ODBC connections in R
-Version: 0.0.0.9000
+Version: 0.0.0.9004
 Authors@R: 
     person(given = "James",
            family = "Hardy",

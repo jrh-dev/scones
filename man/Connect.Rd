@@ -4,7 +4,7 @@
 \alias{Connect}
 \title{Connect to an ODBC DBMS with secure authentication input prompts.}
 \usage{
-Connect(dsn = NULL, driver = NULL, host = NULL, port = NULL, trusted = FALSE)
+Connect(dsn = NULL, driver = odbc::odbc(), trusted = FALSE)
 }
 \arguments{
 \item{dsn}{Character string specifying the data source name (used
@@ -13,11 +13,8 @@ not in place for the desired connection). The names of valid data sources
 available to the user can be retrieved using the \code{ListDataSources()}
 function.}
 
-\item{driver}{Character string specifying the name of a driver to be used.}
-
-\item{host}{Character string specifying the host name.}
-
-\item{port}{Character string specifying  the port number.}
+\item{driver}{Character string specifying the name of a driver to be used.
+default is \code{odbc::odbc()}.}
 
 \item{trusted}{Logical value, use \code{TRUE} when the connection does not require
 a username or password. The default, \code{FALSE}, will prompt the user for
