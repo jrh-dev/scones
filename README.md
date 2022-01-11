@@ -55,16 +55,7 @@ Connect(dsn = "a_data_source_name")
 # To connect without login credentials
 Connect(dsn = "a_data_source_name", trusted = TRUE)
 ```
-#### Without Configuration Files
-Where ODBC configuration files are not in place, users can connect to a database using `Connect()` with additional arguments . 
-```
-library(scones)
 
-Connect(dsn = "a_data_source_name",
-        driver =  "PostgreSQL Driver",
-        host = "127.0.0.1",
-        port = "6123")
-```
 #### Using Stored Credentials
 Users can connect to a database whilst using credentials retrieved from the system credential store with `KeyringConnect()`. The function used the [keyring](https://github.com/r-lib/keyring) package. A key is typically defined A key typically consists of a service name and a password, however, an additional "username" variable can also be stored and must be present to use this function.
 
