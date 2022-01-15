@@ -20,13 +20,10 @@
 #'  }
 #'
 #' @export
-DataSources <- function(contains = NULL) {
-
-  dsn <- odbc::odbcListDataSources()[1]
-
+DataSources <- function (contains = NULL) {
+  dsn <- as.vector(as.matrix(odbc::odbcListDataSources()[1]))
   if (!is.null(contains)) {
-    dsn <- dsn[grepl(contains, dsn, fixed = TRUE, ignore.case = TRUE)]
+    dsn <- dsn[grepl(contains, dsn, ignore.case = TRUE)]
   }
-
   return(dsn)
 }
