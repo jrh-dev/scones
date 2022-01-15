@@ -5,12 +5,12 @@
 #'  interactive RStudio session where the user will receive prompts to enter
 #'  credentials if required.
 #'
-#'  Credentials are handled securely using the {rstudioapi}. For users looking
-#'  to retrieve credentials from the system credential store using the {keyring}
-#'  package, please use `KeyringConnect()`.
-#'
-#'  Where ODBC configuration files are in place, users need only supply the
-#'  {dsn} argument to connect to a database.
+#'  By default, credentials are captured and handled securely using the
+#'  {rstudioapi}. Users can alternatively set the "auth_prompt" argument to
+#'  `FALSE` and pass "uid", and "pwd" arguments specifying the username and
+#'  password respectively. When users choose to use the "uid", and "pwd"
+#'  arguments they are strongly encouraged to use {keyring} or similar and not
+#'  to pass credentials as plain text.
 #'
 #' @importFrom rstudioapi showPrompt askForPassword
 #'
@@ -27,15 +27,33 @@
 #'  a username or password. The default, `FALSE`, will prompt the user for
 #'  credentials.
 #'
+#' @param auth_prompt Logical value. The default, `TRUE`, will prompt the user
+#'  to enter a username and password. When `FALSE` the user must supply the
+#'  username and password as arguments "uid" (username) and "pwd" (password)
+#'  unless credentials are not required, in which case the 'trusted' argument
+#'  should be set to `TRUE`.
+#'
+#'  When users choose to use the "uid", and "pwd" arguments they are strongly
+#'  encouraged to use the {keyring} package or a similar solution and not to
+#'  pass credentials as plain text.
+#'
+#' @param ... Additional arguments to pass to odbc::dbConnect.
+#'  See \link[odbc]{dbConnect,OdbcDriver-method} for further details.
+#'
 #' @examples
 #'  \dontrun{
 #'  conn <- Connect("data_source_name")
 #'  }
 #'
 #' @export
-Connect <- function(dsn = NULL, driver = odbc::odbc(), trusted = FALSE) {
+Connect <- function(dsn = NULL, driver = odbc::odbc(), trusted = FALSE,
+                    auth_prompt = TRUE, ...) {
 
-  requireNamespace("rstudioapi")
+  if (auth_prompt) {
+    requireNamespace("rstudioapi")
+  } else if (!(hasArg("uid") & hasArg("pwd")) & !(trusted)) {
+    stop("Args 'uid' & 'pwd' required when 'auth_prompt' is FALSE and 'trusted' is FALSE.")
+  }
 
   return(
     odbc::dbConnect(
@@ -50,7 +68,8 @@ Connect <- function(dsn = NULL, driver = odbc::odbc(), trusted = FALSE) {
         rstudioapi::askForPassword("Enter password")
       } else {
         NULL
-      }
+      },
+      ...
     )
   )
 }
