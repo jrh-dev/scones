@@ -48,7 +48,7 @@
 #' @export
 Connect <- function(dsn = NULL, auth_prompt = TRUE, ...) {
 
-  if (hasArg(!drv)) {
+  if (!hasArg(drv)) {
     drv <- odbc::odbc()
   }
 
