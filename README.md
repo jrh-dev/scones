@@ -53,20 +53,15 @@ library(scones)
 Connect(dsn = "a_data_source_name")
 
 # To connect without login credentials
-Connect(dsn = "a_data_source_name", trusted = TRUE)
+Connect(dsn = "a_data_source_name", auth_prompt = FALSE)
+
+# To connect whilst passing credentials as arguments
+Connect(dsn = "a_data_source_name", auth_prompt = FALSE, uid = "user_name",
+        pwd = keyring::key_get("service_name, "user_name", "keyring_name"))
 ```
 
 #### Using Stored Credentials
-Users can connect to a database whilst using credentials retrieved from the system credential store with `KeyringConnect()`. The function used the [keyring](https://github.com/r-lib/keyring) package. A key is typically defined A key typically consists of a service name and a password, however, an additional "username" variable can also be stored and must be present to use this function.
-
-The function does not handle keyring unlocking. When used in an interactive session and the keyring is locked at the point where the function is called the user will be prompted to enter the keyring password. Otherwise,  appropriate code should be executed to unlock the keyring before calling the function (if required).
-```
-library(scones)
-
-KeyringConnect(keyring_name = "my_keys, service_name = "LDAP", dsn= NULL)
-```
-
-The other package functions require a connection as created by `Connect()`, `KeyringConnect()`, or a comparable function from the [odbc](https://github.com/r-dbi/odbc)  package.
+Users can connect to a database whilst using credentials retrieved from the system credential store by passing the retrieved username and/or password values as the `uid` and `pwd` arguments by utilising the [keyring](https://github.com/r-lib/keyring) package.
 
 ### List Available Schemas
 `Schemas()` returns a data.frame containing the names and types of all visible objects within a connection. 
