@@ -46,30 +46,32 @@
 #'  }
 #'
 #' @export
-Connect <- function(dsn = NULL, driver = odbc::odbc(), trusted = FALSE,
-                    auth_prompt = TRUE, ...) {
+Connect <- function(dsn = NULL, auth_prompt = TRUE, ...) {
+
+  if (hasArg(!drv)) {
+    drv <- odbc::odbc()
+  }
 
   if (auth_prompt) {
     requireNamespace("rstudioapi")
-  } else if (!(hasArg("uid") & hasArg("pwd")) & !(trusted)) {
-    stop("Args 'uid' & 'pwd' required when 'auth_prompt' is FALSE and 'trusted' is FALSE.")
-  }
 
-  return(
-    odbc::dbConnect(
-      drv = driver,
+    if (hasArg("uid") | hasArg("pwd")) {
+      stop("Arguments 'uid' & 'pwd' should not be passed when 'auth-prompt' is TRUE.")
+    }
+
+    out <- odbc::dbConnect(
+      drv = drv,
       dsn = dsn,
-      uid = if (!trusted) {
-        rstudioapi::showPrompt("Username", "Enter username", default = "")
-      } else {
-        NULL
-      },
-      pwd = if (!trusted) {
-        rstudioapi::askForPassword("Enter password")
-      } else {
-        NULL
-      },
+      uid = rstudioapi::showPrompt("Username", "Enter username", default = ""),
+      pwd = rstudioapi::askForPassword("Enter password"),
       ...
     )
-  )
+  } else {
+    out <- odbc::dbConnect(
+      drv = drv,
+      dsn = dsn,
+      ...
+    )
+  }
+  return(out)
 }
