@@ -3,6 +3,8 @@
 #' @description Fast return of the names of all visible columns in the specified
 #'  table in the correct order.
 #'
+#' @importFrom methods hasArg
+#'
 #' @param connection A DBI Connection object, as returned by `odbc::dbConnect()`
 #'  and `Connect()`.
 #'

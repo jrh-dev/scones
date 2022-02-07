@@ -1,6 +1,6 @@
 Package: scones
 Title: Simplify ODBC connections in R
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Authors@R: 
     person(given = "James",
            family = "Hardy",
@@ -16,7 +16,8 @@ RoxygenNote: 7.1.2
 Imports: 
     odbc,
     keyring,
-    rstudioapi
+    rstudioapi,
+    methods
 Suggests: 
     knitr,
     rmarkdown

@@ -2,40 +2,49 @@
 % Please edit documentation in R/Connect.R
 \name{Connect}
 \alias{Connect}
-\title{Connect to an ODBC DBMS with secure authentication input prompts.}
+\title{Connect to an ODBC DBMS.}
 \usage{
-Connect(dsn = NULL, driver = odbc::odbc(), trusted = FALSE)
+Connect(name = NULL, driver = NULL, auth_prompt = TRUE, ...)
 }
 \arguments{
-\item{dsn}{Character string specifying the data source name (used
-interchangeably to specify database name when ODBC configuration files are
-not in place for the desired connection). The names of valid data sources
-available to the user can be retrieved using the \code{ListDataSources()}
-function.}
+\item{name}{Character string specifying the data source name. The names of
+valid data sources available to the user can be retrieved using the
+\code{ListDataSources()} function.}
 
-\item{driver}{Character string specifying the name of a driver to be used.
-default is \code{odbc::odbc()}.}
+\item{driver}{Specify a DBMS driver, the default when not driver used when
+not specified is \code{odbc::odbc()}.}
 
-\item{trusted}{Logical value, use \code{TRUE} when the connection does not require
-a username or password. The default, \code{FALSE}, will prompt the user for
-credentials.}
+\item{auth_prompt}{Logical value. The default, \code{TRUE}, will prompt the user
+to enter a username and password. When \code{FALSE} the user must supply the
+username and password as arguments "uid" (username) and "pwd" (password)
+unless credentials are not required.}
+
+\item{...}{Additional arguments to pass to \code{odbc::dbConnect()}.
+Common arguments include;
+\itemize{
+\item \code{server} Character string specifying the name of a host.
+\item \code{database} Character string specifying the name of a database.
+\item \code{uid} Character string specifying a username for database authentication.
+By default the function will prompt the user to enter a value.
+\item \code{pwd} Character string specifying a username for database authentication.
+By default the function will prompt the user to enter a value.
+}
+
+See \link[odbc]{dbConnect,OdbcDriver-method} for further details of
+acceptable arguments.}
 }
 \description{
-Wrapper for \code{odbc::dbconnect()}, designed to make connecting to
-an ODBC DBMS as simple as possible. The function is suitable for use in an
-interactive RStudio session where the user will receive prompts to enter
-credentials if required.
+Wrapper for \code{odbc::dbconnect()}, makes connecting toan ODBC DBMS
+as simple as possible.
 
-Credentials are handled securely using the {rstudioapi}. For users looking
-to retrieve credentials from the system credential store using the {keyring}
-package, please use \code{KeyringConnect()}.
-
-Where ODBC configuration files are in place, users need only supply the
-{dsn} argument to connect to a database.
+By default, credentials are captured and handled securely using the
+{rstudioapi}. Users can alternatively set the "auth_prompt" argument to
+\code{FALSE} and pass "uid", and "pwd" arguments specifying the username and
+password respectively.
 }
 \examples{
  \dontrun{
- conn <- Connect("data_source_name")
+ conn <- Connect(name = "data_source_name")
  }
 
 }

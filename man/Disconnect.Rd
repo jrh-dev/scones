@@ -16,7 +16,7 @@ created by \code{odbc::dbConnect()} or \code{Connect()}.
 }
 \examples{
  \dontrun{
- conn <- Connect("data_source_name")
+ conn <- Connect(name = "data_source_name")
 
  Disconnect(conn)
  }

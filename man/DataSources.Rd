@@ -11,14 +11,18 @@ DataSources(contains = NULL)
 available to the user, only data sources with names containing the specified
 string will be returned. Case is ignored.}
 }
+\value{
+A character vector of the names of data sources available to the
+user.
+}
 \description{
 A wrapper for \code{odbc::odbcListDataSources()} which returns a
 character vector of the names of data sources available to the user. Users
 can choose to return only data sources with names containing a specific
 pattern by using the "contains" argument.
 
-The data source names (dsn) returned are suitable for use in the "dsn"
-argument of other functions within the package (e.g. \code{Connect()}).
+The data source names (dsn) returned are suitable for use in the "name"
+argument of \code{Connect()} function.
 }
 \examples{
  \dontrun{

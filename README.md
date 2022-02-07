@@ -1,5 +1,9 @@
 # scones - Simple CONEctionS
+
+<!-- badges: start -->
 [![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
+[![R-CMD-check](https://github.com/jrh-dev/scones/workflows/R-CMD-check/badge.svg)](https://github.com/jrh-dev/scones/actions)
+  <!-- badges: end -->
 
 The package aims to provide helpful functions to simplify creating ODBC connections and performing data extraction. The package acts as a wrapper for the performant [odbc](https://github.com/r-dbi/odbc) package.
 

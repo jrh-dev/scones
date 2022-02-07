@@ -7,7 +7,7 @@
 Query(connection, sql_query)
 }
 \arguments{
-\item{connection}{A DBIConnection object, as returned by \code{odbc::dbConnect()}
+\item{connection}{A DBI Connection object, as returned by \code{odbc::dbConnect()}
 and \code{Connect()}.}
 
 \item{sql_query}{A character string containing SQL.}
@@ -22,7 +22,7 @@ query as a data frame. The function is suitable for SELECT queries only.
 }
 \examples{
  \dontrun{
- conn <- Connect("data_source_name")
+ conn <- Connect(name = "data_source_name")
 
  Query(conn, "SELECT * FROM xx.yyy")
  }
