@@ -14,16 +14,18 @@
 #'  to enter a username and password. When `FALSE` the user must supply the
 #'  username and password as arguments "uid" (username) and "pwd" (password)
 #'  unless credentials are not required.
+#`
+#` @param driver Specify a DBMS driver, the default when not
+#'  specified is `odbc::odbc()`.
+#`
+#` @param ds_name Character string specifying the data source name. The names of
+#'  valid data sources available to the user can be retrieved using the
+#'  `ListDataSources()` function.
 #'
 #' @param ... Additional arguments to pass to `odbc::dbConnect()`.
 #'  Common arguments include;
 #'  driver The ODBC driver name.
 #'
-#'  * `dsn` Character string specifying the data source name. The names of
-#'     valid data sources available to the user can be retrieved using the
-#'     `ListDataSources()` function.
-#'  * `drv` Specify a DBMS driver, for example the default when not
-#'     specified, `odbc::odbc()`.
 #'  * `server` Character string specifying the name of a host.
 #'  * `database` Character string specifying the name of a database.
 #'  * `uid` Character string specifying a username for database authentication.
@@ -40,30 +42,32 @@
 #'  }
 #'
 #' @export
-Connect <- function(auth_prompt = TRUE, ...) {
-
-  if (!hasArg(drv)) {
-    drv <- odbc::odbc()
+Connect <- function(auth_prompt = TRUE, driver = NULL, ds_name <- NULL, ...) {
+  
+  if (is.null(driver)) {
+    driver <- odbc::odbc()
+  } else {
+    driver <- driver
   }
-
+  
   if (auth_prompt) {
     requireNamespace("rstudioapi")
-
+    
     if (hasArg("uid") | hasArg("pwd")) {
       stop("Arguments 'uid' & 'pwd' should not be passed when 'auth-prompt' is TRUE.")
     }
-
+    
     out <- odbc::dbConnect(
-      drv = drv,
-      dsn = dsn,
+      drv = driver,
+      dsn = ds_name,
       uid = rstudioapi::showPrompt("Username", "Enter username", default = ""),
       pwd = rstudioapi::askForPassword("Enter password"),
       ...
     )
   } else {
     out <- odbc::dbConnect(
-      drv = drv,
-      dsn = dsn,
+      drv = driver,
+      dsn = ds_name,
       ...
     )
   }
