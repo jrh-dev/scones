@@ -1,30 +1,29 @@
-#' Retrieve the names of available fields in a table.
+#' Retrieve the names of available columns in a table.
 #'
-#' @description Fast return of the names of all visible fields in the specified
+#' @description Fast return of the names of all visible columns in the specified
 #'  table in the correct order.
 #'
 #' @param connection A DBI Connection object, as returned by `odbc::dbConnect()`
 #'  and `Connect()`.
 #'
 #' @param schema A character vector specifying the name of a schema. Valid
-#'  schema names can be identified by running `Schemas()` and noting rows with
-#'  "type" "schema".
+#'  schema names can be identified using `Schemas()`.
 #'
 #' @param table A character vector specifying the name of a table. Valid
-#'  table names can be identified by running `Tables()`.
+#'  table names can be identified using `Tables()`.
 #'
-#' @return A character vector containing the names of all visible fields in the
+#' @return A character vector containing the names of all visible columns in the
 #'  specified table in the correct order.
 #'
 #' @examples
 #'  \dontrun{
-#'  conn <- Connect("data_source_name")
+#'  conn <- Connect(name = "data_source_name")
 #'
-#'  Fields(conn, "my_schema", "my_table_name")
+#'  Columns(conn, "my_schema", "my_table_name")
 #'  }
 #'
 #' @export
-Fields <- function(connection, schema, table) {
+Columns <- function(connection, schema, table) {
   return(
     names(
       odbc::dbGetQuery(

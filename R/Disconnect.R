@@ -8,7 +8,7 @@
 #'
 #' @examples
 #'  \dontrun{
-#'  conn <- Connect("data_source_name")
+#'  conn <- Connect(name = "data_source_name")
 #'
 #'  Disconnect(conn)
 #'  }

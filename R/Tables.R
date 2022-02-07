@@ -2,8 +2,8 @@
 #'
 #' @description A wrapper for `odbc::dbListTables()` which returns a character
 #'  vector containing the names of tables in alphabetical order. The  function
-#'  default returns the names of all visible tables within a connection, though
-#'  users can specify a schema to limit the return to tables within that schema.
+#'  default returns the names of all visible tables within a connection. Users
+#'  can specify a schema to limit the return to tables within that schema.
 #'
 #'  Users can use the "contains" argument to limit the table names returned to
 #'  those with names containing a specified string.
@@ -13,8 +13,7 @@
 #'
 #' @param schema A character string identifying a 'schema' for which the user
 #'  wants to return the names of tables within that schema. Valid schema names
-#'  can be identified by running `Schemas()` and noting rows with "type"
-#'  "schema".
+#'  can be identified using `Schemas()`.
 #'
 #' @param contains A character string to be matched in the names of tables
 #'  available to the user, only schema with names containing the specified
@@ -25,7 +24,7 @@
 #'
 #' @examples
 #'  \dontrun{
-#'  conn <- Connect()
+#'  conn <- Connect(name = "data_source_name")
 #'
 #'  Tables(conn)
 #'  }
